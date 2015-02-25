@@ -1,0 +1,52 @@
+HKCR
+{
+	Excel.SimpleAddin.1 = s 'SimpleAddin Class'
+	{
+		CLSID = s '{96A39598-853F-4CF6-A23E-8D31B0CED3C4}'
+	}
+	Excel.SimpleAddin = s 'SimpleAddin Class'
+	{		
+		CurVer = s 'Excel.SimpleAddin.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {96A39598-853F-4CF6-A23E-8D31B0CED3C4} = s 'SimpleAddin Class'
+		{
+			ProgID = s 'Excel.SimpleAddin.1'
+			VersionIndependentProgID = s 'Excel.SimpleAddin'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{ED9F0E3B-520F-47B4-911B-350CC2873EB0}'
+			Version = s '1.0'
+		}
+	}
+}
+
+HKCU
+{
+	NoRemove Software
+	{
+		NoRemove Microsoft
+		{
+			NoRemove Office
+			{
+				NoRemove Excel
+				{
+					NoRemove Addins
+					{
+						ForceRemove 'Excel.SimpleAddin'
+						{
+							val FriendlyName = s 'BaiYi Excel Addin'
+							val Description = s 'BaiYi Excel Addin'
+							val LoadBehavior = d '00000003'
+							val CommandLineSafe = d '00000001'
+						}
+					}
+				}
+			}
+		}
+	}
+}
